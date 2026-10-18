@@ -250,6 +250,17 @@ section,footer{position:relative;z-index:1}
 @media(max-width:700px){.o-node{width:4px;height:4px;margin:-2px 0 0 -2px}}
 @media(prefers-reduced-motion:reduce){.o-node{display:none}}
 </style>
+<script id="force-home-on-load">
+(function () {
+  if ("scrollRestoration" in history) history.scrollRestoration = "manual";
+  if (location.hash) history.replaceState(null, "", location.pathname + location.search);
+  function goTop() { window.scrollTo(0, 0); }
+  goTop();
+  window.addEventListener("load", goTop, { once: true });
+  window.addEventListener("pageshow", goTop);
+})();
+</script>
+
 </head>
 <body>
 <div class="world" aria-hidden="true" id="world">
